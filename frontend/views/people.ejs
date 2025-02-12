@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>People</title>
+	<link rel="stylesheet" type="text/css" href="/styles/people.css">
+</head>
+<body>
+	<header>
+		<a href="homepage.html" style="text-decoration: none; "><h1>BDA Lab</h1></a>
+		<nav>
+			<a href="homepage.html">Home</a>
+			<a href="people.ejs">People</a>
+			<a href="projects.ejs">Projects</a>
+			<a href="#">About</a>
+			
+		</nav>
+	</header>
+
+	<main>
+		<section>
+			<h2 style="color:white;">People</h2>
+			<br>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Role</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i=0; i < users.length ; i++){%>
+						<tr>
+							<td><%=users[i].name%></td>
+							<td><%=users[i].email%></td>
+							<td><%=users[i].type%></td>
+						</tr>
+
+					<%}%>
+						
+					
+				</tbody>
+			</table>
+		</section>
+	</main>
+
+	<footer>
+		<p>Big Data Analytics Lab &copy; 2023</p>
+	</footer>
+</body>
+</html>

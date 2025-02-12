@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Registration Form</title>
+    <link rel="stylesheet" href="/styles/signup.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+
+
+  <header>
+		<a href="homepage.html" style="text-decoration: none; "><h1>BDA Lab</h1></a>
+		<nav>
+			<a href="homepage.html">Home</a>
+			<a href="people.ejs">People</a>
+			<a href="projects.ejs">Projects</a>
+			<a href="#">About</a>
+			
+		</nav>
+	</header>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form action="/signup" method="post">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" name="name" required>
+          </div>
+          
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" name="email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Departmnet</span>
+            <input type="text" placeholder="Enter your number" name="department" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Domain</span>
+            <input type="text" placeholder="Enter your username" name="domain" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" placeholder="Enter your password" name="password" id="password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" placeholder="Confirm your password" name="confirm" id="confirm" required onblur=checkPassword()>
+          </div>
+
+          
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="type" id="dot-1" value="phd">
+          <input type="radio" name="type" id="dot-2" value="mtech">
+          <input type="radio" name="type" id="dot-3" value="btech">
+          <span class="gender-title">Role</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">PHD</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">MTECH</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">BTECH</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+		<p>Big Data Analytics Lab &copy; 2023</p>
+	</footer>
+
+
+  <script src="/javascript/signup.js"></script>
+</body>
+</html>

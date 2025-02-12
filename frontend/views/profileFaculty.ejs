@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PhD Scholar Profile: Subham Panda </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			
+		}
+
+		header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px;
+		background-color: #333;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		a h1 {
+			margin: 0;
+			color: white;
+
+		}
+
+		nav {
+			display: flex;
+		}
+
+		nav a {
+			display: block;
+			padding: 10px;
+			margin-left: 20px;
+			font-size: 16px;
+			font-weight: bold;
+			color:white;
+			text-decoration: none;
+			transition: color 0.3s ease-in-out;
+		}
+
+		nav a:hover {
+			color: #007bff;
+			transform: scale(1.1,1.1);
+		}
+
+
+		img {
+			display: block;
+			margin: auto;
+			max-width: 100%;
+			height: auto;
+		}
+
+		h1, h3 {
+			text-align: center;
+		}
+        h2{
+            text-align: left;
+        }
+
+		.container {
+			max-width: 800px;
+			margin: 20px auto;
+			padding: 0 20px;
+		}
+
+		section {
+			margin-bottom: 20px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 20px;
+		}
+
+		table td, table th {
+			padding: 10px;
+			border: 1px solid #ddd;
+			text-align: left;
+		}
+
+		table th {
+			background-color: #333;
+			color: white;
+		}
+
+		
+
+		footer {
+			background-color: #333;
+			color: white;
+			text-align: center;
+			padding: 10px;
+			
+			bottom: 0;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1 style="color: white;">BDA Lab</h1>
+		<nav>
+			<a  href="homepage.html">Logout</a>
+			
+			
+		</nav>
+	</header>
+
+	<section style="padding: 20px;">
+	<h1>Scholar Profile: <%=userDATA.name%></h1>
+	
+		<section>
+			<h2>Details</h2>
+			<ul>
+				<li>Departmnet: <%=userDATA.department%></li>
+				<li>Domain: <%=userDATA.domain%></li>
+				<li>Type: <%=userDATA.type%></li>
+				
+			</ul>
+		</section>
+		<section>
+			<h2 class="research">Research Papers</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Title</th>
+						<th>Co-Authors</th>
+						<th>Citations</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<% for(var i in papers){%>
+						<tr>
+							
+							<td><%=papers[i].year%></td>
+							<td><a href=<%=papers[i].description%>><%=papers[i].title%></a></td>
+							
+							<td>
+								<% for(var j in coauthors){%>
+									
+									<% if (coauthors[j].paper_id==papers[i].project_id){%>
+										
+										<%=coauthors[j].name%>,
+										
+									<%}%>
+
+								<%}%>
+							</td>
+
+
+
+
+							<td><%=papers[i].citations%></td>
+						</tr>
+
+					<%}%>
+					
+
+					
+					
+                </tbody>
+            </table>
+        </section>
+    
+	</section>
+    
+    
+    <footer  style="margin-top: 13rem;">
+        <p>&copy; 2023 Big Data Analytics Lab. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

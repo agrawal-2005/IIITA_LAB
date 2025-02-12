@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BDA Lab</title>
+	<link rel="stylesheet" href="/styles/homepage.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+</head>
+<body>
+
+	<section id="toBlur">
+		<header>
+			BDA Lab
+		</header>
+		<nav>
+			<a href="homepage.html" >Home</a>
+			<a href="conferences.ejs">Conferences</a>
+			<a href="projects.ejs">Projects</a>
+			<a href="people.ejs">People</a>
+			
+			<a href="#" class="navlogin navt" onclick="openLogin()">Login</a>
+			<a href="signup.html">SignUp</a>
+			<a href="feedback.html">Feedback</a>
+		</nav>
+
+		
+		<div class="image-carousel">
+			<img src="/images/homepage.jpg" alt="Image 1">
+			<div class="carousel-text">Big Data Analytics</div>
+			</div>
+			<div class="main-content">
+			<h2>Welcome to BDA Lab</h2>
+			<p>We are a research lab focused on big data analytics, machine learning, and data mining. Our goal is to advance the state of the art in these fields through cutting-edge research and real-world applications.</p>
+			
+		</div>
+
+
+		<div class="main-content" style="padding: 20px ;text-align: center;background: linear-gradient(135deg, #42859b, #50997d7d);color: white;">
+
+			<h2 style="text-align: center;">About</h2>
+			<p>In today's world, Big data analytics and stream processing have taken great hype due to the digitization of the environment along with the integration of smart data computing services and interconnectivity. This digitized world offers huge applications especially in the fields of agriculture, healthcare, smart education, economy, energy, industry, and a lot more. Most of the required data is gathered by the countless number of sensor devices being applied in the vicinity of humans to identify certain activities or scenarios. In order to process such a huge never-ending stream of data, there is a need to re-think the way data is processed for both cases i.e. data-at-rest and data-in-motion.</p>
+		</div>
+
+
+		<div class="main-content" style="padding: 20px ;text-align: center;">
+
+			<h2 style="text-align: center;">IIIT-Allahabad</h2>
+			<p>Indian Institute of Information Technology Allahabad (IIITA) located in Jhalwa, Allahabad, Uttar Pradesh, India was established in 1999, as a center of excellence in Information Technology and allied areas and is an institute of national importance by the act of parliament. IIIT-Allahabad aims to evolve an integrated ambiance of creative learning, researching for novelties, contributing to the growth of knowledge, mapping the knowledge into innovations, innovations in terms of innovative products, services and also in terms of re-engineering the education process itself, devising the newer tools and sophisticating the skills at higher level.</p>
+		</div>
+
+
+		<div class="main-content" style="padding: 20px ;text-align: center;background: linear-gradient(135deg, #42859b, #50997d7d);color: white;">
+
+			<h2 style="text-align: center;">Our Facilities</h2>
+
+			<div style="display: flex;">
+				<div>
+					
+
+					<img width="60%" src="/images/lab-1.jpg" alt="">
+					
+					<p>Our research covers Big Data Analytics, Stream Processing, machine learning and interactive exploration for high dimensional data, complex graphs, time series, and data streams.</p>
+
+
+				</div>
+				<div>
+
+					<img width="60%" src="/images/lab-2.jpg" alt="">
+					
+					<p>Ph.D. positions are available in the research areas representation mainly in Hyperspectral Data Analytics, anomaly detection and predictive analytics on data streams</p>
+
+
+				</div>
+				<div>
+
+					<img width="60%" src="/images/lab-3.jpeg" alt="">
+					<p>The Big Data Analytics Lab (BDaL), is an interdisciplinary research laboratory, that focuses on large-scale data analytics problems that arise in different application domains and disciplines.</p>
+
+
+				</div>
+			
+			</div>
+
+
+
+			
+			
+		</div>
+
+
+		<div class="main-content" style="padding: 20px ;text-align: center;">
+
+			<h2 style="text-align: center;">Mentors</h2>
+
+			<div style="display: flex;">
+
+				<div>
+					<a href="https://www.linkedin.com/in/ashutosh-kumar-4b213b171/?originalSubdomain=in"><img width="50%"  src="/images/pic-1.jpeg" alt=""></a>
+					<h3>Mr. Ashutosh Kumar</h3>
+				</div>
+				<div>
+					<a href="https://profile.iiita.ac.in/sonali/"><img width="50%" src="/images/pic-2.jpg" alt=""></a>
+					<h3>Dr. Sonali Agarwal</h3>
+				</div>
+				<div>
+					<a href="https://www.linkedin.com/in/omkarendra/"><img width="50%" src="/images/pic-3.jpg" alt=""></a>
+					<h3>Dr. Omkendra Tiwari</h3>
+				</div>
+
+			</div>
+				
+		</div>
+
+			
+
+
+
+
+		
+
+	
+	<footer class="footer">
+		© 2023 BDA Lab. All rights reserved.
+		</footer>
+	</section>
+
+		
+
+
+	
+
+
+	<div class="popup-confirm" id="popup">
+		<div class="popup-content">
+		  <h2 >Login</h2>
+		  <form action="/login" id="login-form" method="post">
+			<div class="form-group input-box">
+				<label for="roles">Role</label>
+				<select name="roles" id="roles" >
+					<option value="" disabled selected>Select your role</option>
+				  <option value="admin">Admin</option>
+				  <option value="faculty">Faculty</option>
+				  <option value="phd">PHD</option>
+				  <option value="mtech">MTECH</option>
+				  <option value="btech">BTECH</option>
+				</select>
+			  </div>
+			<div class="form-group" style="width: 93.5%;">
+			  <label for="username">Email</label>
+			  <input type="text" id="username" name="username" placeholder="Email" required>
+			</div>
+			<div class="form-group" style="width: 93.5%;">
+			  <label for="password">Password</label>
+			  <input type="password" id="password" name="password" placeholder="Password" required>
+			</div>
+
+		  </form>
+		</div>
+		<button class="btn cancel-button" onclick="closeLogin()">Cancel</button>
+		<button class="btn confirm-button" onclick="submitLogin()" >Login</button>
+	  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+<script src="/javascript/homepage.js"></script>
+
+
+
+		 
+
+
+
+
+        
+</body>
+
+		
+
+
+
+		
+</html>

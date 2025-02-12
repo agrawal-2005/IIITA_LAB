@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>People | Big Data Analytics Lab</title>
+	<link rel="stylesheet" type="text/css" href="/styles/people.css">
+</head>
+<body>
+	<header>
+		<a href="homepage.html" style="text-decoration: none; "><h1>BDA Lab</h1></a>
+		<nav>
+			<a href="homepage.html">Home</a>
+			<a href="people.ejs">People</a>
+			<a href="projects.ejs">Projects</a>
+			<a href="#">About</a>
+			
+		</nav>
+	</header>
+
+	<main>
+		<section class="container">
+			
+			<table>
+				<thead>
+					<tr>
+						<th>Conference ID</th>
+						<th>Title</th>
+						<th>Instructor</th>
+						<th>Date</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i=0; i < conferences.length ; i++){%>
+						<tr>
+							<td><%=i+1%></td>
+							
+							<td><%=conferences[i].title%></td>
+							
+							<td><%=conferences[i].platform%></td>
+							<td><%=conferences[i].date%></td>
+						</tr>
+
+					<%}%>
+					
+						
+					
+				</tbody>
+			</table>
+		</section>
+	</main>
+
+	<footer>
+		<p>Big Data Analytics Lab &copy; 2023</p>
+	</footer>
+</body>
+</html>

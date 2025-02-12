@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles/admin.css">
+	<link rel="stylesheet" href="/styles/style.css">
+	<title>Big Data Analytics Lab - Admin Dashboard</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	
+		
+
+
+</head>
+<body>
+	<header>
+		<a href="homepage.html" style="text-decoration: none; "><h1>BDA Lab</h1></a>
+		<nav>
+			<a href="homepage.html">Logout</a>
+			
+			
+		</nav>
+	</header>
+
+	<section class="counts">
+		<% console.log(counts)%>
+		<div class="home-content">
+			<div class="overview-boxes">
+			  <div class="box">
+				<div class="right-side">
+				  <div class="box-topic">Conferences</div>
+				  <div class="number"><%=counts.conference%></div>
+				  
+				</div>
+				<i class='bx bx-cart-alt cart'></i>
+			  </div>
+			  <div class="box">
+				<div class="right-side">
+				  <div class="box-topic">People</div>
+				  <div class="number"><%=counts.people%></div>
+				  
+				</div>
+				<i class='bx bxs-cart-add cart two' ></i>
+			  </div>
+			  <div class="box">
+				<div class="right-side">
+				  <div class="box-topic">Projects</div>
+				  <div class="number"><%=counts.projects%></div>
+				  
+				</div>
+				<i class='bx bx-cart cart three' ></i>
+			  </div>
+			  <div class="box">
+				<div class="right-side">
+				  <div class="box-topic">Feedbacks</div>
+				  <div class="number"><%=all_feedback.length%></div>
+				  
+				</div>
+				<i class='bx bxs-cart-download cart four' ></i>
+			  </div>
+			</div>
+	</section>
+	<section >
+		
+		<div class="notifications">
+			
+			<p style="padding-top: 12px;" >Admin <%= userDATA.name%> logged in at time: <%= new Date().toLocaleString();%> .</p>
+	
+		</div>
+		
+	</section>
+	<div class="container">
+		<main>
+
+			
+			<section class="section-admin">
+				<div class="conference-admin">
+					<h2>Feedbacks</h2>
+					
+					<table>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Feedback</th>
+							</tr>
+
+							<% for(var i=0;i < all_feedback.length ; i++ ){%>
+								<tr>
+									<td><%=all_feedback[i].name%></td>
+									<td><%=all_feedback[i].email%></td>
+									<td><%=all_feedback[i].feedback%></td>
+								</tr>
+							<%}%>
+							
+						</thead>
+						
+					</table>
+				</div>
+			</section>
+			<section class="section-admin">
+				<h1 class="admin-control-panel">Admin Control Panel</h1>
+				<a href="registration.html"><button class="admin-btn" > Registratin Page</button><br></a>
+				<a href="people.ejs"><button class="admin-btn"> People Page</button><br></a>
+				<a href="projects.ejs"><button class="admin-btn"> Projects Page</button><br></a>
+			</section>
+			
+        </main>
+    </div>
+
+	<footer>
+		<p>Big Data Analytics Lab &copy; 2023</p>
+	</footer>
+
+	
+                
+</body>
+</html>

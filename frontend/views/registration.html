@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+	<link rel="stylesheet" href="/styles/registration.css">
+	
+	<title>Big Data Analytics Lab - Admin Dashboard</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	
+		
+
+
+</head>
+
+
+<style>
+
+
+footer {
+    
+    
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px 20px;
+	margin-top: 15rem;
+}
+
+</style>
+<body>
+	
+	<section id="toBlur"> 
+		<header class="header">
+			<h1 class="logo">Big Data Analytics Lab</h1>
+			<nav>
+				
+				<a href="homepage.html">Logout</a>
+			</nav>
+		</header>
+
+		<a href="/admin.ejs" class="go_back"><button class="btn ">Go Back</button></a>
+		<div class="form-div">
+			<form action="/conference" method="post" id="conference-form">
+			<button type="button" class="collapsible">Add a Conference</button>
+			
+				<div class="content">
+					<div class="form-group">
+						<label for="conference">Conference Name:</label>
+						<input type="text" id="conference" name="conference" placeholder="Enter conference name">
+					</div>
+
+					<div class="form-group">
+						<label for="date">Conference Date:</label>
+						<input type="date" id="date" name="date" placeholder="Enter conference date">
+					</div>
+
+					<div class="form-group">
+						<label for="phd-name">Instructor Name:</label>
+						<input type="text" id="platform-name" name="platform_name" placeholder="Enter Instructor name">
+					</div>
+
+					
+					<button onclick="confirmConference()" type="button">Submit</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="form-div">
+			
+			<form action="/project" method="post" id="project-form">
+			<button type="button" class="collapsible" >Add a Project</button>
+				<div class="content">
+					
+
+					<div class="form-group">
+						<label for="date">Project topic:</label>
+						<input type="text" id="project-topic" name="topic" placeholder="Enter project topic">
+					</div>
+
+					<div class="form-group">
+						<label for="phd-name">Project Lead:</label>
+						<input type="text" id="project-lead" name="project_lead" placeholder="Enter project lead name">
+					</div>
+					<div class="form-group">
+						<label for="phd-name">Project Instructor:</label>
+						<input type="text" id="project-faculty" name="project_faculty" placeholder="Enter instructor name">
+					</div>
+
+					<div class="form-group">
+						<label for="phd-name">Project Description:</label>
+						<input type="text" id="project-description" name="description" placeholder="Enter description">
+					</div>
+
+					<div class="form-group">
+						<label for="phd-name">Project Domain:</label>
+						<input type="text" id="project-domain" name="domain" placeholder="Enter Domain">
+					</div>
+
+					<div class="form-group">
+						<label for="phd-name">Year:</label>
+						<input type="date" id="year" name="year" placeholder="Enter Date">
+					</div>
+					
+
+					<button onclick="confirmProject()" type="button">Submit</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="form-div">
+			<form action="/coauthor" method="post" id="instructor-form">
+			<button type="button" class="collapsible">Add coauthor to a Project</button>
+				<div class="content">
+
+					<div class="form-group">
+						<label for="date">Project ID:</label>
+						<input type="text" id="project-id" name="project_id" placeholder="Enter Project ID">
+					</div>
+
+					<div class="form-group">
+						<label for="date">Name:</label>
+						<input type="text" id="coauthor-name" name="coauthor_name" placeholder="Enter name">
+					</div>
+
+					<div class="form-group">
+						<label for="conference">Coauthor eamil:</label>
+						<input type="text" id="coauthor-email" name="coauthor_email" placeholder="Enter Coauthor email">
+					</div>
+
+					
+					
+
+					<button onclick="confirmCoauthor()" type="button">Submit</button>
+				</div>
+			</form>
+		</div>
+
+		
+	</section>
+
+
+	<div class="popup-confirm" id="popup">
+			<h1 id="val-0"></h1>
+			<h1 id="val-1"></h1>
+			<h1 id="val-2"></h1>
+			<h1 id="val-3"></h1>
+			<h1 id="val-4"></h1>
+		
+		<button class="btn cancel-button" onclick="closeForm()">Cancel</button>
+		<button class="btn confirm-button" onclick="submitForm()" >Confirm</button>
+	</div>
+
+
+	
+	<footer  >
+		<p>Big Data Analytics Lab &copy; 2023</p>
+	</footer>
+
+	<script src="/javascript/registration.js"></script>
+                
+</body>
+</html>
