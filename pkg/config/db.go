@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"net/url"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
@@ -14,30 +15,36 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	// Load environment variables
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if err := godotenv.Load(); err != nil {
+		log.Panic("❌ Error loading .env file:", err)
 	}
 
-	// Get DB credentials
 	dbUser := os.Getenv("DB_USER")
 	dbPass := os.Getenv("DB_PASSWORD")
 	dbHost := os.Getenv("DB_HOST")
 	dbName := os.Getenv("DB_NAME")
-	dbPort := os.Getenv("DB_PORT")
 
-	// Construct DSN
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		dbUser, dbPass, dbHost, dbPort, dbName)
-
-	// Connect to the database
-	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Fatal("Failed to connect to database:", err)
+	if dbUser == "" || dbPass == "" || dbHost == "" || dbName == "" {
+		log.Panic("❌ Database credentials missing! Check .env file.")
 	}
 
-	// Migrate database models
+	escapedPass := url.QueryEscape(dbPass)
+
+	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local&multiStatements=true",
+		dbUser, escapedPass, dbHost, dbName,
+	)
+
+	var err error
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		log.Panic("❌ Failed to connect to database:", err)
+	}
+
 	models.AutoMigrate(DB)
-	fmt.Println("Database successfully connected & migrated!")
+
+	fmt.Println("✅ Database connected & migrated successfully!")
+}
+
+func GetDB() *gorm.DB {
+	return DB
 }

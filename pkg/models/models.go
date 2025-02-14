@@ -6,7 +6,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// Coauthor Model
 type Coauthor struct {
 	ID       int    `json:"id" gorm:"primaryKey;autoIncrement"`
 	PaperID  int    `json:"paper_id" gorm:"index"`
@@ -14,7 +13,6 @@ type Coauthor struct {
 	Name     string `json:"name"`
 }
 
-// Conference Model
 type Conference struct {
 	ID       int       `json:"id" gorm:"primaryKey;autoIncrement"`
 	Date     time.Time `json:"date"`
@@ -22,7 +20,6 @@ type Conference struct {
 	Title    string    `json:"title"`
 }
 
-// Feedback Model
 type Feedback struct {
 	ID       int    `json:"id" gorm:"primaryKey;autoIncrement"`
 	Name     string `json:"name"`
@@ -30,23 +27,12 @@ type Feedback struct {
 	Feedback string `json:"feedback"`
 }
 
-// Login Model
 type Login struct {
 	Username string `json:"username" gorm:"primaryKey"`
-	Password string `json:"password"`
-	Type     string `json:"type"`
+	Password string `json:"password"`	// Store **hashed** passwords, not plaintext!
+	User_Type     string `json:"user_type"`
 }
 
-// People Model
-type People struct {
-	Name       string `json:"name"`
-	Email      string `json:"email" gorm:"unique"`
-	Department string `json:"department"`
-	Type       string `json:"type"`
-	Domain     string `json:"domain,omitempty"`
-}
-
-// Project Model
 type Project struct {
 	ProjectID       int       `json:"project_id" gorm:"primaryKey;autoIncrement"`
 	Title           string    `json:"title"`
@@ -60,7 +46,6 @@ type Project struct {
 
 }
 
-// Publication Model
 type Publication struct {
 	PaperID    int       `json:"paper_id" gorm:"primaryKey;autoIncrement"`
 	Title      string    `json:"title"`
@@ -72,7 +57,6 @@ type Publication struct {
 	Link       string    `json:"link"`
 }
 
-// Research Model
 type Research struct {
 	ResearchID int       `json:"research_id" gorm:"primaryKey;autoIncrement"`
 	Title      string    `json:"title"`
@@ -83,44 +67,40 @@ type Research struct {
 	Status     string    `json:"status"`
 }
 
-// ResearchMember Model
 type ResearchMember struct {
-	ResearchID int    `json:"research_id"`
+	ID		   int	  `json:"id" gorm:"primaryKey;autoIncrement"`
+	ResearchID int    `json:"research_id" gorm:"index;foreignKey:ResearchID;references:ResearchID"`
 	MemberName string `json:"member_name"`
 	Email      string `json:"email"`
 }
 
-// Student Model
 type Student struct {
 	Email       string `json:"email" gorm:"primaryKey"`
 	Name        string `json:"name"`
-	RollNumber  string `json:"roll_number" gorm:"unique"`
+	RollNumber  string `json:"roll_number" gorm:"uniqueIndex"`
 	Department  string `json:"department"`
 	Batch       int    `json:"batch"`
 	Supervisor  string `json:"supervisor"`
-	ResearchID  int    `json:"research_id,omitempty"`
-	ProjectID   int    `json:"project_id,omitempty"`
-	Conference  int    `json:"conference,omitempty"`
-	Publication int    `json:"publication,omitempty"`
+	ResearchID  *int   `json:"research_id,omitempty" gorm:"foreignKey:ResearchID;references:ResearchID"`
+	ProjectID   *int   `json:"project_id,omitempty" gorm:"foreignKey:ProjectID;references:ProjectID"`
+	Conference  *int   `json:"conference,omitempty" gorm:"foreignKey:Conference;references:ID"`
+	Publication *int   `json:"publication,omitempty" gorm:"foreignKey:Publication;references:PaperID"`
 }
 
-// Supervisor Model
 type Supervisor struct {
 	Email      string `json:"email" gorm:"primaryKey"`
 	Name       string `json:"name"`
 	Department string `json:"department"`
-	ResearchID int    `json:"research_id,omitempty"`
-	ProjectID  int    `json:"project_id,omitempty"`
+	ResearchID *int   `json:"research_id,omitempty" gorm:"foreignKey:ResearchID;references:ResearchID"`
+	ProjectID  *int   `json:"project_id,omitempty" gorm:"foreignKey:ProjectID;references:ProjectID"`
 }
 
-// AutoMigrate function for database migrations
 func AutoMigrate(db *gorm.DB) {
-	err := db.AutoMigrate(
+	db.AutoMigrate(
 		&Coauthor{},
 		&Conference{},
 		&Feedback{},
 		&Login{},
-		&People{},
 		&Project{},
 		&Publication{},
 		&Research{},
@@ -128,9 +108,5 @@ func AutoMigrate(db *gorm.DB) {
 		&Student{},
 		&Supervisor{},
 	)
-	if err != nil {
-		fmt.Println("Database migration failed!")
-	} else {
-		fmt.Println("Database migration successful!")
-	}
+	fmt.Println("✅ Database migration successful!")
 }
