@@ -1,12 +1,12 @@
 # IIITA Lab API
 
 ## 📌 Project Overview
-IIITA Lab API is a RESTful API built using **Golang (Gin Framework)** and **GORM** for database management. It provides an interface for managing research-related data, including publications, projects, conferences, students, and supervisors at IIITA.
+IIITA Lab API is a RESTful API built with **Golang (Gin Framework)** and **GORM** for database management. It serves as an interface for managing research-related data, including publications, projects, conferences, students, and supervisors at IIITA.
 
 ## 🚀 Features
-- User Authentication (Login system)
+- User authentication (Login system)
 - CRUD operations for research publications, projects, and conferences
-- Student and Supervisor management
+- Student and supervisor management
 - Feedback collection
 - Automatic database migration with GORM
 
@@ -18,28 +18,30 @@ IIITA Lab API is a RESTful API built using **Golang (Gin Framework)** and **GORM
 
 ## 📂 Project Structure
 ```
-bda-lab/
-│── cmd/                     
-│   ├── main.go              # entry point for app
-│── pkg/                     # Configuration files (DB, JWT, etc.)
-│   ├── config/              # Configuration files (DB, JWT, etc.)
-│   │   ├── db.go            # MySQL database connection
-│   │   ├── config.go        # App configuration (env variables)
-│   ├── controllers/         # Handles API logic
-│   │   ├── auth_controller.go  # Authentication logic (login, register)
-│   │   ├── feedback_controller.go  # Feedback endpoints
-│   │   ├── publications_controller.go  # Publications endpoints
-│   ├── middleware/          # Middleware (Auth, Logging, etc.)
-│   │   ├── auth_middleware.go  # JWT Authentication Middleware
-│   ├── models/              # Structs representing database tables
-│   │   ├── user.go          # User model
-│   ├── routes/              # API Routes
-│   │   ├── routes.go        # router
-│── go.mod                   # Go module file
-│── go.sum                   # Dependency lock file
-│── .env                     # Environment variables file
-│── README.md                # Project documentation
-
+iiita_lab/
+│── backend/                     # Backend folder
+│   ├── cmd/                      # Entry point for the app
+│   │   ├── main.go               # Main application file
+│   ├── pkg/                      # Package folder for configurations, models, and utilities
+│   │   ├── config/               # Configuration files (DB, JWT, etc.)
+│   │   │   ├── db.go             # MySQL database connection
+│   │   ├── controllers/          # API logic handlers
+│   │   │   ├── student.go        # Student controller
+│   │   ├── middlewares/          # Middleware (Auth, Logging, etc.)
+│   │   │   ├── auth.go           # JWT authentication middleware
+│   │   ├── models/               # Database models
+│   │   │   ├── models.go         # Structs representing database tables
+│   │   ├── routes/               # API route definitions
+│   │   ├── utils/                # Utility functions
+│   │   │   ├── jwt.go            # JWT handling
+│   │   │   ├── password.go       # Password hashing utilities
+│   ├── go.mod                    # Go module file
+│   ├── go.sum                    # Dependency lock file
+│── document/                     # Documentation folder
+│   ├── ER.pdf                    # Entity Relationship Diagram
+│── frontend/                     # Frontend folder
+│   ├── views/                     # Frontend views (HTML, EJS, etc.)
+│── README.md                      # Project documentation
 ```
 
 ## ⚙️ Setup Instructions
@@ -70,7 +72,7 @@ go mod tidy
 
 ### 5️⃣ Run the Application
 ```sh
-go run cmd/main.go
+go run backend/cmd/main.go
 ```
 
 ### 6️⃣ API Endpoints
@@ -84,10 +86,10 @@ go run cmd/main.go
 
 ## ✨ Contributing
 Contributions are welcome! To contribute:
-1. Fork the repo
+1. Fork the repository
 2. Create a new branch (`git checkout -b feature-branch`)
 3. Commit changes (`git commit -m "Add feature"`)
-4. Push to branch (`git push origin feature-branch`)
+4. Push to the branch (`git push origin feature-branch`)
 5. Open a pull request
 
 ## 📜 License
