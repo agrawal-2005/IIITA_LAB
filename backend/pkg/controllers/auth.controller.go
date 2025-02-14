@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/agrawal-2005/iiita_lab/backend/pkg/config"
 	"github.com/agrawal-2005/iiita_lab/backend/pkg/models"
@@ -10,7 +11,7 @@ import (
 )
 
 type Login struct {
-	Username string `json:"username" binding:"required"`
+	Email    string `json:"email" binding:"required"`
 	Password string `json:"password" binding:"required"`
 	UserType string `json:"user_type" binding:"required"`
 }
@@ -23,8 +24,8 @@ func LoginUser (c *gin.Context){
 	}
 
 	user := models.People{}
-	if err := config.DB.Where("username = ?", req.Username).First(&user).Error; err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid username or password"})
+	if err := config.DB.Where("Email = ?", req.Email).First(&user).Error; err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid email or password"})
 		return
 	}
 
@@ -52,7 +53,8 @@ func Register (c *gin.Context) {
 
 	existingUser := models.People{}
 	result := config.DB.Where("email = ?", req.Email).First(&existingUser)
-	if result.RowsAffected > 0 {
+
+	if result.Error == nil {
 		c.JSON(http.StatusConflict, gin.H{"error": "User already exists"})
 		return
 	}
@@ -78,6 +80,8 @@ func Logout(c *gin.Context) {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "No token provided"})
 		return
 	}
+
+	token = strings.TrimPrefix(token, "Bearer ")
 
 	blacklistedToken := models.BlacklistedToken{Token: token}
 	if err := config.DB.Create(&blacklistedToken).Error; err != nil {
