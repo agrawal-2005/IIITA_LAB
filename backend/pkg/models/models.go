@@ -27,10 +27,13 @@ type Feedback struct {
 	Feedback string `json:"feedback"`
 }
 
-type Login struct {
-	Username string `json:"username" gorm:"primaryKey"`
-	Password string `json:"password"`	// Store **hashed** passwords, not plaintext!
-	User_Type     string `json:"user_type"`
+type People struct {
+	Name       string  `json:"name" gorm:"not null"`
+	Email      string  `json:"email" gorm:"primaryKey;unique"`
+	Password   string  `json:"password" gorm:"not null"` // Store **hashed** passwords
+	Department string  `json:"department" gorm:"not null"`
+	User_Type  string  `json:"user_type" gorm:"not null"`
+	Domain     *string `json:"domain,omitempty"`
 }
 
 type Project struct {
@@ -43,7 +46,6 @@ type Project struct {
 	Status          string    `json:"status"`
 	Citations       int       `json:"citations"`
 	Year 			int 	  `json:"year,omitempty"`
-
 }
 
 type Publication struct {
@@ -65,6 +67,11 @@ type Research struct {
 	Year 	   int 	  	 `json:"year,omitempty"`
 	Citations  int       `json:"citations"`
 	Status     string    `json:"status"`
+}
+
+type BlacklistedToken struct {
+	ID    uint   `gorm:"primaryKey"`
+	Token string `gorm:"unique"`
 }
 
 type ResearchMember struct {
@@ -100,10 +107,11 @@ func AutoMigrate(db *gorm.DB) {
 		&Coauthor{},
 		&Conference{},
 		&Feedback{},
-		&Login{},
+		&People{},
 		&Project{},
 		&Publication{},
 		&Research{},
+		&BlacklistedToken{},
 		&ResearchMember{},
 		&Student{},
 		&Supervisor{},
