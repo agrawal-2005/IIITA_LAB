@@ -34,7 +34,7 @@ func LoginUser (c *gin.Context){
 		return
 	}
 	
-	token, err := utils.GenerateToken(user.Name, user.User_Type)
+	token, err := utils.GenerateToken(user.Name, user.User_Type, user.Email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not generate token"})
 		return
@@ -52,7 +52,7 @@ func Register (c *gin.Context) {
 	}
 
 	existingUser := models.People{}
-	result := config.DB.Where("email = ?", req.Email).First(&existingUser)
+	result := config.DB.Where("Email = ?", req.Email).First(&existingUser)
 
 	if result.Error == nil {
 		c.JSON(http.StatusConflict, gin.H{"error": "User already exists"})
