@@ -1,7 +1,7 @@
-# **IIITA Lab API**  
+# **IIITA Lab**  
 
 ## 📌 Project Overview  
-IIITA Lab API is a **RESTful API** built using **Golang (Gin Framework)** and **GORM** for database management. It provides an interface for managing **research-related data**, including publications, projects, conferences, students, and supervisors at **IIIT Allahabad**.
+IIITA Lab is built using **Golang (Gin Framework)** and **GORM** for database management. It manages **research-related data**, including publications, projects, conferences, students, and supervisors at **IIIT Allahabad**.
 
 ## 🚀 Features  
 ✔️ **User Authentication** (JWT-based login system)  
