@@ -18,12 +18,13 @@ func main() {
 	config.Connect()
 
 	r := gin.Default()
+
+	// Registering routes
 	routes.SetupAuthRoutes(r)
+	routes.SetupProfileRoutes(r)
 
 	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Hello, Gin!",
-		})
+		c.JSON(http.StatusOK, gin.H{"message": "Hello, Gin!"})
 	})
 
 	port := os.Getenv("PORT")
@@ -38,7 +39,7 @@ func main() {
 	}
 
 	go func() {
-		log.Println("🚀 Server is running on port", port)
+		log.Printf("🚀 Server is running on port %s", port)
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("❌ Server failed: %v", err)
 		}
